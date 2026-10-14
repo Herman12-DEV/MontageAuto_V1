@@ -1,0 +1,20 @@
+# /etc/systemd/system/autocut-worker@.service — workers de montage (un par instance)
+# Activer 1 worker : systemctl enable --now autocut-worker@1
+# Ajouter un 2e worker (NF-SCA-01) : systemctl enable --now autocut-worker@2
+[Unit]
+Description=AutoCut worker %i
+After=network.target postgresql.service
+
+[Service]
+User=autocut
+WorkingDirectory=/opt/autocut/backend
+EnvironmentFile=/opt/autocut/backend/.env
+ExecStart=/opt/autocut/backend/.venv/bin/python -m app.worker
+# Laisse le montage en cours se terminer avant l'arrêt.
+KillSignal=SIGTERM
+TimeoutStopSec=600
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

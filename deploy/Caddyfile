@@ -1,0 +1,9 @@
+# /etc/caddy/Caddyfile — HTTPS automatique (Let's Encrypt), NF-SEC-01
+votre-domaine.com {
+	encode gzip
+	# Téléversement par morceaux de 8 Mo : marge confortable.
+	request_body {
+		max_size 20MB
+	}
+	reverse_proxy 127.0.0.1:8000
+}

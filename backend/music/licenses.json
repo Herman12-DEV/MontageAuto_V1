@@ -1,0 +1,222 @@
+[
+  {
+    "id": "autocut-01",
+    "title": "Horizon — Calme",
+    "mood": "Calme",
+    "bpm": 72,
+    "duration": 66.67,
+    "file": "autocut-01.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-02",
+    "title": "Horizon — Pop",
+    "mood": "Pop",
+    "bpm": 100,
+    "duration": 67.2,
+    "file": "autocut-02.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-03",
+    "title": "Horizon — Énergie",
+    "mood": "Énergie",
+    "bpm": 122,
+    "duration": 62.95,
+    "file": "autocut-03.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-04",
+    "title": "Horizon — Lo-fi",
+    "mood": "Lo-fi",
+    "bpm": 82,
+    "duration": 70.24,
+    "file": "autocut-04.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-05",
+    "title": "Rivage — Calme",
+    "mood": "Calme",
+    "bpm": 72,
+    "duration": 66.67,
+    "file": "autocut-05.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-06",
+    "title": "Rivage — Pop",
+    "mood": "Pop",
+    "bpm": 100,
+    "duration": 67.2,
+    "file": "autocut-06.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-07",
+    "title": "Rivage — Énergie",
+    "mood": "Énergie",
+    "bpm": 122,
+    "duration": 62.95,
+    "file": "autocut-07.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-08",
+    "title": "Rivage — Lo-fi",
+    "mood": "Lo-fi",
+    "bpm": 82,
+    "duration": 70.24,
+    "file": "autocut-08.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-09",
+    "title": "Nocturne — Calme",
+    "mood": "Calme",
+    "bpm": 72,
+    "duration": 66.67,
+    "file": "autocut-09.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-10",
+    "title": "Nocturne — Pop",
+    "mood": "Pop",
+    "bpm": 100,
+    "duration": 67.2,
+    "file": "autocut-10.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-11",
+    "title": "Nocturne — Énergie",
+    "mood": "Énergie",
+    "bpm": 122,
+    "duration": 62.95,
+    "file": "autocut-11.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-12",
+    "title": "Nocturne — Lo-fi",
+    "mood": "Lo-fi",
+    "bpm": 82,
+    "duration": 70.24,
+    "file": "autocut-12.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-13",
+    "title": "Lumière — Calme",
+    "mood": "Calme",
+    "bpm": 72,
+    "duration": 66.67,
+    "file": "autocut-13.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-14",
+    "title": "Lumière — Pop",
+    "mood": "Pop",
+    "bpm": 100,
+    "duration": 67.2,
+    "file": "autocut-14.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-15",
+    "title": "Lumière — Énergie",
+    "mood": "Énergie",
+    "bpm": 122,
+    "duration": 62.95,
+    "file": "autocut-15.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-16",
+    "title": "Lumière — Lo-fi",
+    "mood": "Lo-fi",
+    "bpm": 82,
+    "duration": 70.24,
+    "file": "autocut-16.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-17",
+    "title": "Velours — Calme",
+    "mood": "Calme",
+    "bpm": 72,
+    "duration": 66.67,
+    "file": "autocut-17.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-18",
+    "title": "Velours — Pop",
+    "mood": "Pop",
+    "bpm": 100,
+    "duration": 67.2,
+    "file": "autocut-18.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-19",
+    "title": "Velours — Énergie",
+    "mood": "Énergie",
+    "bpm": 122,
+    "duration": 62.95,
+    "file": "autocut-19.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  },
+  {
+    "id": "autocut-20",
+    "title": "Velours — Lo-fi",
+    "mood": "Lo-fi",
+    "bpm": 82,
+    "duration": 70.24,
+    "file": "autocut-20.mp3",
+    "author": "Bibliothèque AutoCut (synthèse générative FFmpeg)",
+    "source": "Générée par scripts/generate_music.py",
+    "license": "CC0 1.0 (domaine public)"
+  }
+]

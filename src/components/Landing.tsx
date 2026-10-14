@@ -1,4 +1,5 @@
 import { ArrowRight, Play } from 'lucide-react'
+import SiteFooter from './SiteFooter'
 
 export default function Landing() {
   return (
@@ -9,7 +10,7 @@ export default function Landing() {
           <nav className="hero__nav">
             <a href="#produit">Produit</a>
             <a href="#fonctionnement">Fonctionnement</a>
-            <a href="#/app/profil">Tarifs</a>
+            <a href="#/tarifs">Tarifs</a>
             <a href="#/connexion">Connexion</a>
           </nav>
         </div>
@@ -244,15 +245,7 @@ export default function Landing() {
         </div>
       </section>
 
-      <footer className="footer">
-        <div className="container footer__row">
-          <span className="tag">AutoCut / Montage vidéo automatique / 2026</span>
-          <span className="tag footer__status">
-            <i className="dot dot--green" />
-            Statut — tous les systèmes opérationnels
-          </span>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

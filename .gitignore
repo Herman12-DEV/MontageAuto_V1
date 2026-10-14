@@ -8,3 +8,14 @@ dist/
 coverage/
 __pycache__/
 .venv/
+.pytest_cache/
+.coverage
+# Données d'exécution du backend (base SQLite, vidéos, modèles Whisper, e-mails de dev)
+backend/storage/
+
+# Journaux des émulateurs Firebase
+*-debug.log
+
+# Clés privées Firebase / Google : ne jamais versionner
+*service-account*.json
+firebase-adminsdk*.json

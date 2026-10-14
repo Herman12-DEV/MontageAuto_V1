@@ -1,6 +1,8 @@
-import type { ReactNode } from 'react'
+import type { MouseEvent, ReactNode } from 'react'
 import { FolderOpen, LogOut, Plus, Settings2, UserRound } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import { clearSession, useEngineOnline, useUser } from '../api'
+import type { Quota } from '../api'
 
 export type NavKey = 'projets' | 'nouveau' | 'reglages' | 'profil'
 
@@ -18,7 +20,24 @@ const navItems: NavItem[] = [
   { key: 'profil', label: 'Mon profil', href: '#/app/profil', icon: UserRound },
 ]
 
+export function creditsLabel(quota: Quota): string {
+  if (quota.unlimited) return `${quota.plan_label} · montages illimités`
+  return `${quota.remaining}/${quota.limit} montages restants ce mois`
+}
+
 export default function AppLayout({ nav, children }: { nav: NavKey; children: ReactNode }) {
+  const user = useUser()
+  const online = useEngineOnline()
+
+  const logout = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    clearSession()
+      .catch(() => undefined)
+      .finally(() => {
+        window.location.hash = '#/connexion'
+      })
+  }
+
   return (
     <div className="app">
       <aside className="app__sidebar">
@@ -38,11 +57,17 @@ export default function AppLayout({ nav, children }: { nav: NavKey; children: Re
           })}
         </nav>
         <div className="app__sidebar-foot">
+          {user && (
+            <a className="app__status" href="#/app/profil" title="Voir mon offre">
+              <i className={`dot dot--${user.quota.unlimited || (user.quota.remaining ?? 0) > 0 ? 'green' : 'red'}`} />
+              {creditsLabel(user.quota)}
+            </a>
+          )}
           <span className="app__status">
-            <i className="dot dot--green" />
-            Moteur IA en ligne
+            <i className={`dot dot--${online === false ? 'red' : 'green'}`} />
+            {online === false ? 'Moteur IA indisponible' : 'Moteur IA en ligne'}
           </span>
-          <a className="app__logout" href="#/connexion">
+          <a className="app__logout" href="#/connexion" onClick={logout}>
             <LogOut size={14} />
             Déconnexion
           </a>
