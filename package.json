@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node scripts/start.mjs",
+    "en-ligne": "node scripts/en-ligne.mjs",
     "dev": "vite --host ::",
     "build": "tsc --noEmit && vite build && node scripts/netlify-postbuild.mjs",
     "preview": "vite preview --host ::",

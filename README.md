@@ -177,11 +177,15 @@ site l'atteint par un proxy `/api/*` — un seul domaine côté navigateur, donc
   `dist/_redirects` (proxy `/api/*` vers `API_PROXY_URL`, puis repli SPA).
 
 ```bash
-API_PROXY_URL=https://api.votre-domaine.com npm run build   # règle le proxy, puis…
-npm run netlify:deploy                                      # publie dist/ sur Netlify
+npm run en-ligne                                          # backend + tunnel Cloudflare gratuit :
+                                                          # affiche l'adresse https à coller dans Netlify
+API_PROXY_URL=https://api.votre-domaine.com npm run build  # règle le proxy, puis…
+npm run netlify:deploy                                     # publie dist/ sur Netlify
 ```
 
-Guide complet, pas à pas : **[docs/DEPLOIEMENT_NETLIFY.md](docs/DEPLOIEMENT_NETLIFY.md)**.
+Guides : **[docs/METTRE_EN_LIGNE_PAS_A_PAS.md](docs/METTRE_EN_LIGNE_PAS_A_PAS.md)** (simple, 15 minutes,
+0 €, rien à installer) et **[docs/DEPLOIEMENT_NETLIFY.md](docs/DEPLOIEMENT_NETLIFY.md)** (version détaillée :
+VPS, Oracle *Always Free*, Hugging Face Spaces, Firebase, Stripe, dépannage).
 
 ## Shorts
 

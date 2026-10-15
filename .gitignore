@@ -13,6 +13,9 @@ __pycache__/
 # Données d'exécution du backend (base SQLite, vidéos, modèles Whisper, e-mails de dev)
 backend/storage/
 
+# Tunnel Cloudflare (binaire téléchargé par « npm run en-ligne »)
+.cloudflared/
+
 # Journaux des émulateurs Firebase
 *-debug.log
 
