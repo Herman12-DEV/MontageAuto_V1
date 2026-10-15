@@ -1,0 +1,86 @@
+name: Déploiement Netlify
+
+# Met le site en ligne sur Netlify (offre gratuite) à chaque poussée sur main.
+#
+# Deux façons de faire, au choix :
+#   1. Intégration Git de Netlify (aucun secret ici) : Netlify compile lui-même le dépôt
+#      à chaque commit sur main. Ce workflow devient alors un simple contrôle : il se
+#      termine en « succès » sans déployer, avec un message explicatif.
+#   2. Déploiement piloté par GitHub : ajoutez les secrets NETLIFY_AUTH_TOKEN et
+#      NETLIFY_SITE_ID (et la variable API_PROXY_URL) puis ce workflow publie dist/.
+#      Voir docs/DEPLOIEMENT_NETLIFY.md.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'index.html'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - 'tsconfig.json'
+      - 'netlify.toml'
+      - 'scripts/**'
+      - '.github/workflows/deploy-netlify.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: netlify-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  netlify:
+    name: Publier le site
+    runs-on: ubuntu-24.04
+    env:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      # Adresse publique du backend FastAPI (https://api.votre-domaine.com).
+      # À définir dans Settings → Secrets and variables → Actions → Variables,
+      # et aussi dans Netlify (Site configuration → Environment variables).
+      API_PROXY_URL: ${{ vars.API_PROXY_URL }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Compilation de production
+        run: npm run build
+
+      - name: Afficher la cible du proxy /api
+        run: |
+          echo "API_PROXY_URL=${API_PROXY_URL:-<non défini>}"
+          cat dist/_redirects
+
+      - name: Déployer sur Netlify
+        if: env.NETLIFY_AUTH_TOKEN != '' && env.NETLIFY_SITE_ID != ''
+        run: |
+          npx --yes netlify-cli@27 deploy \
+            --prod \
+            --dir=dist \
+            --site "$NETLIFY_SITE_ID" \
+            --message "GitHub Actions ${GITHUB_SHA::7} — ${GITHUB_REF_NAME}"
+
+      - name: Publier les règles de sécurité Firebase Storage
+        if: env.FIREBASE_SERVICE_ACCOUNT != ''
+        run: |
+          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/firebase-service-account.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/firebase-service-account.json"
+          npx --yes firebase-tools@latest deploy --only storage --project autocut-eb855 --non-interactive
+          rm -f "$RUNNER_TEMP/firebase-service-account.json"
+
+      - name: Rappel si les secrets Netlify sont absents
+        if: env.NETLIFY_AUTH_TOKEN == '' || env.NETLIFY_SITE_ID == ''
+        run: |
+          echo "::notice title=Netlify::Aucun secret NETLIFY_AUTH_TOKEN / NETLIFY_SITE_ID : le site n'a pas été publié par GitHub Actions."
+          echo "Reliez le dépôt à Netlify (Add new site → Import an existing project) : Netlify compilera automatiquement chaque poussée sur main."

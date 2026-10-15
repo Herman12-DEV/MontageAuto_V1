@@ -1,0 +1,28 @@
+# Déploiement gratuit du site (interface React) sur Netlify.
+# Le backend FastAPI tourne ailleurs (VPS, tunnel Cloudflare, Hugging Face Spaces…) :
+# il est joint par le proxy /api/* écrit dans dist/_redirects par scripts/netlify-postbuild.mjs.
+# Guide complet : docs/DEPLOIEMENT_NETLIFY.md
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Vite 8 exige Node >= 22.12 ; .nvmrc porte la version exacte utilisée en local et dans GitHub Actions.
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--no-audit --no-fund"
+
+# Sécurité : le site ne doit être ni encadré, ni deviné par le navigateur.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Les fichiers produits par Vite portent une empreinte dans leur nom : cache permanent.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
