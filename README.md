@@ -1,5 +1,8 @@
 # AutoCut (MontageAuto) — plateforme de montage vidéo automatique
 
+[![CI](https://github.com/Herman12-DEV/MontageAuto_V1/actions/workflows/ci.yml/badge.svg)](https://github.com/Herman12-DEV/MontageAuto_V1/actions/workflows/ci.yml)
+[![Déploiement Netlify](https://github.com/Herman12-DEV/MontageAuto_V1/actions/workflows/deploy-netlify.yml/badge.svg)](https://github.com/Herman12-DEV/MontageAuto_V1/actions/workflows/deploy-netlify.yml)
+
 Déposez une vidéo brute, récupérez en quelques minutes une vidéo **sans silences**, **sous-titrée mot par mot (karaoké)**, avec **musique de fond dosée sous la voix**, **recadrée en 9:16** et prête à publier.
 
 ```
@@ -11,7 +14,9 @@ autocut/
 │   ├── music/           20 pistes libres de droits (CC0) + registre des licences
 │   ├── scripts/         génération de la bibliothèque musicale
 │   └── tests/           tests unitaires, d'intégration (FFmpeg réel) et de recette
-└── deploy/              services systemd + Caddy (HTTPS) pour un VPS
+├── deploy/              services systemd + Caddy (HTTPS) pour un VPS
+├── docs/                guides (mise en ligne gratuite Netlify, CI/CD)
+└── .github/workflows/   intégration continue + déploiement Netlify
 ```
 
 ## Stack
@@ -157,6 +162,26 @@ cœurs disponibles / 2), sur la même machine ou une autre machine pointant vers
 
 **Reprise après coupure** (R10) : les services redémarrent seuls ; un montage interrompu est détecté
 (battement de cœur) et remis en file automatiquement, puis marqué en échec avec remboursement après 2 tentatives.
+
+## Mise en ligne gratuite (Netlify) et déploiement continu
+
+L'interface (fichiers statiques) se publie **gratuitement sur Netlify** ; le backend FastAPI continue de
+tourner sur une machine (VPS, tunnel Cloudflare, Oracle Cloud *Always Free*, Hugging Face Spaces…) et le
+site l'atteint par un proxy `/api/*` — un seul domaine côté navigateur, donc aucune CORS à gérer.
+
+- `.github/workflows/ci.yml` — à chaque poussée et pull request : `npm run typecheck`, `npm run build`,
+  puis les 68 tests Python avec FFmpeg réel (badge ⬆ ci-dessus).
+- `.github/workflows/deploy-netlify.yml` — publie `dist/` sur Netlify à chaque poussée sur `main`
+  (ou laisse Netlify compiler lui-même le dépôt : intégration Git, aucun secret à gérer).
+- `netlify.toml` + `scripts/netlify-postbuild.mjs` — build, en-têtes de sécurité et écriture de
+  `dist/_redirects` (proxy `/api/*` vers `API_PROXY_URL`, puis repli SPA).
+
+```bash
+API_PROXY_URL=https://api.votre-domaine.com npm run build   # règle le proxy, puis…
+npm run netlify:deploy                                      # publie dist/ sur Netlify
+```
+
+Guide complet, pas à pas : **[docs/DEPLOIEMENT_NETLIFY.md](docs/DEPLOIEMENT_NETLIFY.md)**.
 
 ## Shorts
 
