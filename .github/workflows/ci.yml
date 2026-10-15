@@ -68,7 +68,7 @@ jobs:
           .venv/bin/python -m pip install --upgrade pip -q
           .venv/bin/python -m pip install -q -r requirements-dev.txt
 
-      - name: Tests (moteur FFmpeg, API, worker, Firebase, paiement)
+      - name: Tests — 66 cas (moteur FFmpeg, API, worker, Firebase, paiement)
         working-directory: backend
         run: |
           .venv/bin/python -m pytest -q --cov=app --cov-report=term-missing:skip-covered

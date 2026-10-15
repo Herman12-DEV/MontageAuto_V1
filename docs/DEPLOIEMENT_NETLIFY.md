@@ -38,8 +38,8 @@ Le fichier `netlify.toml` (déjà dans le dépôt) contient toute la configurati
 Rien à faire : `.github/workflows/ci.yml` s'exécute à chaque poussée et à chaque pull request.
 
 - `Site — typecheck et compilation` : `npm ci`, `npm run typecheck`, `npm run build`, site conservé en artefact.
-- `API et moteur — pytest` : installe FFmpeg (avec libass) + Python 3.11, puis lance les 68 tests
-  (moteur FFmpeg réel, API, worker, Firebase, paiement) avec la couverture.
+- `API et moteur — pytest` : installe FFmpeg (avec libass) + Python 3.11, puis lance toute la suite
+  (66 cas : moteur FFmpeg réel, API, worker, Firebase, paiement) avec la couverture.
 
 Pour l'afficher en haut du README :
 

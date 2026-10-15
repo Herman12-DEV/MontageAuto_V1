@@ -170,7 +170,7 @@ tourner sur une machine (VPS, tunnel Cloudflare, Oracle Cloud *Always Free*, Hug
 site l'atteint par un proxy `/api/*` — un seul domaine côté navigateur, donc aucune CORS à gérer.
 
 - `.github/workflows/ci.yml` — à chaque poussée et pull request : `npm run typecheck`, `npm run build`,
-  puis les 68 tests Python avec FFmpeg réel (badge ⬆ ci-dessus).
+  puis la suite de tests Python (66 cas : moteur, API, worker, Firebase, paiement) avec FFmpeg réel.
 - `.github/workflows/deploy-netlify.yml` — publie `dist/` sur Netlify à chaque poussée sur `main`
   (ou laisse Netlify compiler lui-même le dépôt : intégration Git, aucun secret à gérer).
 - `netlify.toml` + `scripts/netlify-postbuild.mjs` — build, en-têtes de sécurité et écriture de
