@@ -74,7 +74,7 @@ Tu dois voir du texte en JSON : `{"status":"ok", ...}`. Si tu vois ça, ton serv
    - *Build command* : `npm run build`
    - *Publish directory* : `dist`
 5. Clique sur **Deploy**. Au bout d'une minute, Netlify donne une adresse du type
-   **https://montageauto-v1.netlify.app**. Le site s'affiche déjà… mais il ne peut pas encore parler
+   **https://montageauto.netlify.app**. Le site s'affiche déjà… mais il ne peut pas encore parler
    à ton serveur : c'est l'étape suivante.
 
 > Note : à ce stade, `main` ne contient pas encore la configuration Netlify (elle est dans la
@@ -103,7 +103,7 @@ Sans ça, la création de compte échouera avec le message `auth/unauthorized-do
 
 1. Va sur **https://console.firebase.google.com** → projet **autocut-eb855**.
 2. Menu **Authentication** → onglet **Settings** → section **Authorized domains** → **Add domain**.
-3. Ajoute ton adresse Netlify **sans** `https://` (ex. `montageauto-v1.netlify.app`) → **Add**.
+3. Ajoute ton adresse Netlify **sans** `https://` (l’adresse de ton site : `montageauto.netlify.app`) → **Add**.
 4. (Uniquement si tu veux « Continuer avec Google ») : https://console.cloud.google.com → *API et
    services* → *Identifiants* → ton **ID client OAuth** → *Origines JavaScript autorisées* →
    ajoute `https://montageauto-v1.netlify.app` → *Enregistrer*.
@@ -137,7 +137,14 @@ Le pas-à-pas de ces solutions est dans **[DEPLOIEMENT_NETLIFY.md](DEPLOIEMENT_N
 
 ---
 
-## 9. Ensuite : publier une nouvelle version du site
+## 9. Adresse de ton site
+
+Ton site est déjà en ligne : **https://montageauto.netlify.app** (je l’ai ouvert : l’interface s’affiche).
+Ce qui manque encore, c’est le lien avec le serveur : aujourd’hui `https://montageauto.netlify.app/api/health`
+répond « Page not found », parce que la configuration du proxy (celle de la pull request n° 3) n’est pas
+encore dans `main`. Après la fusion de la PR n° 3, il ne restera que les étapes 1, 3 et 4 de ce guide.
+
+## 10. Ensuite : publier une nouvelle version du site
 
 - Dès que la **pull request n° 3** est fusionnée dans `main`, Netlify republie le site **à chaque
   `git push` sur `main`**, tout seul. Tu n'as plus jamais à faire « deploy » à la main.
@@ -146,7 +153,7 @@ Le pas-à-pas de ces solutions est dans **[DEPLOIEMENT_NETLIFY.md](DEPLOIEMENT_N
 
 ---
 
-## 10. Si ça ne marche pas — les 4 pannes les plus courantes
+## 11. Si ça ne marche pas — les 4 pannes les plus courantes
 
 | Ce que tu vois | Ce qui se passe | Quoi faire |
 |---|---|---|
@@ -157,7 +164,7 @@ Le pas-à-pas de ces solutions est dans **[DEPLOIEMENT_NETLIFY.md](DEPLOIEMENT_N
 
 ---
 
-## 11. Quels fichiers du dépôt servent à quoi (pour info)
+## 12. Quels fichiers du dépôt servent à quoi (pour info)
 
 | Fichier | Rôle |
 |---|---|
